@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<!-- Mirrored from trevantalearning.in/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 26 Nov 2026 11:17:07 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta name="theme-color" content="#070b18">
+    <meta name="description"
+        content="Trevanta Learning provides professional certification training and exam preparation across cloud, cybersecurity, project management, data, AI, networking and business.">
+    <title>Trevanta Learning | Empowering Skills. Elevating Careers.</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <style>
+        .mobile-menu-toggle {
+            display: none; border: 1px solid rgba(120,232,246,.45);
+            background: rgba(7,11,24,.9); color: #fff; border-radius: 10px;
+            padding: 9px 12px; font-size: 1.25rem; line-height: 1; cursor: pointer;
+        }
+        @media (max-width: 850px) {
+            .nav { position: relative; }
+            .mobile-menu-toggle { display: inline-flex; align-items: center; justify-content: center; margin-left: auto; }
+            .navlinks.mobile-open {
+                display: flex; position: absolute; top: calc(100% + 10px); right: 0; z-index: 30;
+                flex-direction: column; align-items: stretch; gap: 8px; min-width: 210px;
+                padding: 14px; background: #0b1224; border: 1px solid rgba(120,232,246,.25);
+                border-radius: 14px; box-shadow: 0 14px 35px rgba(0,0,0,.35);
+            }
+            .navlinks.mobile-open a:not(.btn) { display: block; padding: 10px 12px; }
+            .navlinks.mobile-open .btn { display: block; text-align: center; }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="top">
+        <div class="wrap nav"><a class="brand" href="#home" aria-label="Trevanta Learning home"><span class="mark">T</span><span>TREVANTA <span
+                        style="color:#78e8f6">LEARNING</span></span></a>
+            <button class="mobile-menu-toggle" type="button" aria-label="Open navigation menu"
+                aria-expanded="false" aria-controls="main-navigation">☰</button>
+            <nav class="navlinks" id="main-navigation" aria-label="Main navigation">
+                <a href="#why">Why Trevanta</a>
+                <a href="#catalog">Certifications</a>
+                <a href="#contact">Contact</a>
+                <a class="btn" href="#catalog">Explore Courses ↗</a>
+            </nav>
+        </div>
+    </header>
+    <main id="main-content">
+        <section id="home" class="hero">
+            <div class="wrap hero-grid">
+                <div><span class="eyebrow">Future-ready professional learning</span>
+                    <h1>Build the skills.<br><span>Shape what’s next.</span></h1>
+                    <p class="lead">Advance your career with industry-aligned certification training and exam
+                        preparation in cloud, cybersecurity, AI, project management, networking and beyond.</p>
+                    <div class="actions"><a class="btn" href="#catalog">Explore Certifications ↗</a><a
+                            class="btn outline"
+                            href="https://wa.me/15796634663?text=Hello%20Trevanta%20Learning%2C%20I%27d%20like%20to%20discuss%20certification%20training."
+                            target="_blank" rel="noopener">Talk to an Advisor</a></div>
+                    <div class="metrics">
+                        <div class="metric"><b>150+</b><small>Certification pathways</small></div>
+                        <div class="metric"><b>7</b><small>Learning domains</small></div>
+                        <div class="metric"><b>Global</b><small>Professional audience</small></div>
+                    </div>
+                </div>
+                <div class="visual" role="img" aria-label="Trevanta technology illustration">
+                    <div class="visual-head"><span>LEARNING // FUTURE READY</span><span>● SYSTEM ONLINE</span></div>
+                    <div class="orbs">
+                        <div class="orbit"></div>
+                        <div class="orb">T</div>
+                    </div>
+                    <div class="visual-foot">
+                        <div class="mini"><small>Focus area</small><b>Career Advancement</b></div>
+                        <div class="mini"><small>Learning tracks</small><b>IT + Business</b></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="why" class="section">
+            <div class="wrap">
+                <div class="section-head">
+                    <div>
+                        <div class="kicker">The Trevanta advantage</div>
+                        <h2>Learning built for <span class="gradient">what's next.</span></h2>
+                        <p class="sub">Explore relevant certification pathways and find training options aligned with
+                            your goals.</p>
+                    </div>
+                </div>
+                <div class="grid3">
+                    <div class="feature">
+                        <div class="symbol">◈</div>
+                        <h3>Career-focused pathways</h3>
+                        <p>Find certification tracks for entry-level, experienced and leadership roles across technical
+                            and business disciplines.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="symbol">⌘</div>
+                        <h3>Broad course catalog</h3>
+                        <p>Explore cloud, security, project management, AI, data, enterprise platforms and quality
+                            management in one place.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="symbol">↗</div>
+                        <h3>Personal guidance</h3>
+                        <p>Contact our team to discuss your experience, preferred certification, learning format and
+                            preparation needs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="catalog" class="section catalog">
+            <div class="wrap">
+                <div class="kicker">Explore the catalog</div>
+                <h2>Find your next <span class="gradient">certification.</span></h2>
+                <p class="sub">Search by exam, technology, platform or career path. Training availability and exam
+                    requirements vary by program.</p>
+                <div class="searchbar"><input id="search" type="search"
+                        placeholder="Search AWS, PMP, Security+, Power BI, Salesforce..."
+                        aria-label="Search certifications"></div>
+                <div id="filters" class="filters" role="group" aria-label="Filter certifications by category"></div>
+                <p class="catalog-meta" id="resultCount" aria-live="polite"></p>
+                <div class="courses" id="courses"></div><button id="more" class="btn outline load">Load more
+                    certifications ↓</button>
+            </div>
+        </section>
+        <section class="section">
+            <div class="wrap">
+                <div class="cta">
+                    <div>
+                        <div class="kicker">Not sure where to begin?</div>
+                        <h2>Let's map your next move.</h2>
+                        <p class="sub">Tell us your role and goals. We'll help you explore a suitable certification
+                            training path.</p>
+                    </div><a class="btn"
+                        href="https://wa.me/15796634663?text=Hello%20Trevanta%20Learning%2C%20please%20help%20me%20choose%20a%20certification."
+                        target="_blank" rel="noopener">Get Guidance ↗</a>
+                </div>
+            </div>
+        </section>
+        <section id="contact" class="section">
+            <div class="wrap">
+                <div class="section-head">
+                    <div>
+                        <div class="kicker">Get in touch</div>
+                        <h2>Start a <span class="gradient">conversation.</span></h2>
+                        <p class="sub">Submit your details to open a prefilled WhatsApp enquiry, or contact us by email.</p>
+                    </div>
+                </div>
+                <div class="contactbox">
+                    <form id="leadForm">
+                        <div class="formgrid"><input name="name" placeholder="Full name" aria-label="Full name" autocomplete="name" required><input name="email"
+                            type="email" placeholder="Email address" aria-label="Email address" autocomplete="email" required><input name="course"
+                            placeholder="Certification of interest" aria-label="Certification of interest" required><input name="message"
+                            placeholder="Your question (optional)" aria-label="Your question (optional)"></div><button type="submit" class="btn">Continue
+                            to WhatsApp ↗</button>
+                        <p class="notice">Your details will be added to a WhatsApp message. Nothing is sent until you press Send in WhatsApp. To email us instead, use the button below; Gmail will open a new message addressed to Sales@trevantalearning.in.</p>
+                    </form>
+                    <a class="btn email-contact" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=Sales%40trevantalearning.in&amp;su=Certification%20training%20enquiry&amp;body=Hello%20Trevanta%20Learning%2C%0A%0AI%27m%20interested%20in%20certification%20training." target="_blank" rel="noopener">Continue to email ↗</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="wrap foot">
+            <div>
+                <div class="brand"><span class="mark">T</span><span>TREVANTA LEARNING</span></div>
+                <p>Empowering Skills. Elevating Careers.</p>
+            </div>
+            <div>
+                <p>Certification training & exam preparation</p>
+                <p>WhatsApp: +1 (579) 663-4663</p>
+                <p>Email: <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=Sales%40trevantalearning.in&amp;su=Certification%20training%20enquiry&amp;body=Hello%20Trevanta%20Learning%2C%0A%0AI%27m%20interested%20in%20certification%20training." target="_blank" rel="noopener">Sales@trevantalearning.in</a></p>
+                <p>© 2026 Trevanta Learning</p>
+            </div>
+        </div>
+        <div class="wrap notice">Certification names are trademarks of their respective owners. Trevanta Learning is an
+            independent training provider and does not claim affiliation with certification bodies unless expressly
+            stated.</div>
+    </footer><a class="whatsapp email-button" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=Sales%40trevantalearning.in&amp;su=Certification%20training%20enquiry&amp;body=Hello%20Trevanta%20Learning%2C%0A%0AI%27m%20interested%20in%20certification%20training." target="_blank" rel="noopener">✉ Email us</a>
+    <a class="whatsapp"
+        href="https://wa.me/15796634663?text=Hi%20Trevanta%20Learning%2C%20I%20have%20a%20certification%20enquiry."
+        target="_blank" rel="noopener">✆ WhatsApp</a>
+    <script>
+        (() => {
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            const nav = document.getElementById('main-navigation');
+            if (!toggle || !nav) return;
+            toggle.addEventListener('click', () => {
+                const isOpen = nav.classList.toggle('mobile-open');
+                toggle.setAttribute('aria-expanded', String(isOpen));
+                toggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+                toggle.textContent = isOpen ? '✕' : '☰';
+            });
+            nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+                nav.classList.remove('mobile-open');
+                toggle.setAttribute('aria-expanded', 'false');
+                toggle.setAttribute('aria-label', 'Open navigation menu');
+                toggle.textContent = '☰';
+            }));
+        })();
+    </script>
+    <script src="assets/app.js"></script>
+    <script>
+        document.querySelector('.email-contact').addEventListener('click', event => {
+            const form = document.getElementById('leadForm');
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                form.reportValidity();
+                return;
+            }
+            event.preventDefault();
+            const data = new FormData(form);
+            const body = [
+                'Hello Trevanta Learning,',
+                '',
+                'I am interested in certification training.',
+                `Name: ${data.get('name')}`,
+                `Email: ${data.get('email')}`,
+                `Certification: ${data.get('course')}`,
+                `Message: ${data.get('message') || 'No additional message'}`
+            ].join('\n');
+            const params = new URLSearchParams({
+                view: 'cm',
+                fs: '1',
+                to: 'Sales@trevantalearning.in',
+                su: 'Certification training enquiry',
+                body
+            });
+            window.open(`https://mail.google.com/mail/?${params}`, '_blank', 'noopener,noreferrer');
+        });
+    </script>
+    <script type="module"
+        src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+        integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw=="
+        data-cf-beacon='{"version":"2024.11.0","token":"bf27c6d70f74445bacb1f6805cd629af","r":1,"spa":2}'
+        crossorigin="anonymous"></script>
+</body>
+<!-- Mirrored from trevantalearning.in/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 26 Nov 2026 11:17:07 GMT -->
+
+</html>
