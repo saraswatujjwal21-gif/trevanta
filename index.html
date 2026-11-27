@@ -16,6 +16,29 @@
             background: rgba(7,11,24,.9); color: #fff; border-radius: 10px;
             padding: 9px 12px; font-size: 1.25rem; line-height: 1; cursor: pointer;
         }
+        .course-detail-link {
+            margin-top: 2px; padding: 9px 12px; border: 1px solid rgba(120,232,246,.35);
+            border-radius: 9px; background: rgba(120,232,246,.08); color: #b9f4ff;
+            font: inherit; font-size: 13px; font-weight: 700; text-align: left; cursor: pointer;
+        }
+        .course-detail-link:hover { background: rgba(120,232,246,.16); }
+        .course-detail {
+            position: fixed; width: min(580px, calc(100vw - 32px)); max-height: 85vh;
+            margin: auto; padding: clamp(24px, 5vw, 36px);
+            border: 1px solid rgba(120,232,246,.3); border-radius: 20px;
+            color: #f2f6ff; background: linear-gradient(145deg,#17233b,#0d1528);
+            box-shadow: 0 24px 80px rgba(0,0,0,.65); overflow-y: auto;
+        }
+        .course-detail::backdrop { background: rgba(3,7,18,.76); backdrop-filter: blur(5px); }
+        .course-detail h2 { margin: 8px 42px 18px 0; font-size: clamp(25px, 4vw, 36px); }
+        .course-detail p { color: #aab9d0; line-height: 1.8; }
+        .course-detail-close {
+            position: absolute; top: 14px; right: 14px; width: 38px; height: 38px;
+            border: 1px solid #ffffff30; border-radius: 10px; background: #ffffff0b;
+            color: #e7f4ff; font-size: 22px; cursor: pointer;
+        }
+        .course-fees { margin-top: 24px; padding-top: 18px; border-top: 1px solid #ffffff20; }
+        .course-fees strong { color: #78e8f6; }
         @media (max-width: 850px) {
             .nav { position: relative; }
             .mobile-menu-toggle { display: inline-flex; align-items: center; justify-content: center; margin-left: auto; }
@@ -113,13 +136,16 @@
                 <h2>Find your next <span class="gradient">certification.</span></h2>
                 <p class="sub">Search by exam, technology, platform or career path. Training availability and exam
                     requirements vary by program.</p>
-                <div class="searchbar"><input id="search" type="search"
-                        placeholder="Search AWS, PMP, Security+, Power BI, Salesforce..."
-                        aria-label="Search certifications"></div>
-                <div id="filters" class="filters" role="group" aria-label="Filter certifications by category"></div>
-                <p class="catalog-meta" id="resultCount" aria-live="polite"></p>
-                <div class="courses" id="courses"></div><button id="more" class="btn outline load">Load more
-                    certifications ↓</button>
+                <div id="catalogBrowse">
+                    <div class="searchbar"><input id="search" type="search"
+                            placeholder="Search AWS, PMP, Security+, Power BI, Salesforce..."
+                            aria-label="Search certifications"></div>
+                    <div id="filters" class="filters" role="group" aria-label="Filter certifications by category"></div>
+                    <p class="catalog-meta" id="resultCount" aria-live="polite"></p>
+                    <div class="courses" id="courses"></div><button id="more" class="btn outline load">Load more
+                        certifications ↓</button>
+                </div>
+                <dialog id="courseDetail" class="course-detail" aria-labelledby="courseDetailTitle"></dialog>
             </div>
         </section>
         <section class="section">
@@ -199,6 +225,76 @@
         })();
     </script>
     <script src="assets/app.js"></script>
+    <script>
+        (() => {
+            const courses = document.getElementById('courses');
+            const detail = document.getElementById('courseDetail');
+            const categoryDescriptions = {
+                'Cloud & DevOps': 'Explore cloud architecture, infrastructure, deployment, and operations concepts relevant to this certification.',
+                'Cybersecurity': 'Build knowledge of security principles, threat awareness, risk, and security practices relevant to this certification.',
+                'Project Management': 'Learn the frameworks and practical approaches used to plan, deliver, and improve projects and services.',
+                'Networking & IT': 'Develop practical understanding of networking, IT systems, and the technologies covered by this certification.',
+                'Data, AI & Analytics': 'Explore data concepts, analytics workflows, and AI technologies relevant to this certification.',
+                'Salesforce & Business': 'Build skills in business platforms, CRM workflows, application development, or business analysis.',
+                'ISO, Quality & Operations': 'Understand management-system principles, implementation, auditing, and continual improvement.'
+            };
+            let lastTrigger;
+            const escapeHtml = value => value.replace(/[&<>"']/g, character => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            })[character]);
+
+            function addDetailButtons() {
+                courses.querySelectorAll('.course').forEach(card => {
+                    if (card.querySelector('.course-detail-link')) return;
+                    const button = document.createElement('button');
+                    button.type = 'button';
+                    button.className = 'course-detail-link';
+                    button.textContent = 'View training details →';
+                    card.appendChild(button);
+                });
+            }
+
+            function showDetail(card, trigger) {
+                lastTrigger = trigger;
+                const name = card.querySelector('h3').textContent.trim();
+                const category = card.querySelector('small').textContent.trim();
+                const focus = categoryDescriptions[category]
+                    || 'Explore the key knowledge and practical skills associated with this certification.';
+                const description = `This training helps you prepare for ${name}. ${focus}`;
+                detail.innerHTML = `
+                    <button class="course-detail-close" type="button" aria-label="Close training details">×</button>
+                    <h2 id="courseDetailTitle">${escapeHtml(name)}</h2>
+                    <div class="course-description">
+                        <strong>Description</strong>
+                        <p>${escapeHtml(description)}</p>
+                    </div>
+                    <div class="course-fees">
+                        <strong>Fees</strong>
+                        <p>Pricing details will be added soon.</p>
+                    </div>`;
+                detail.showModal();
+                detail.querySelector('.course-detail-close').focus();
+            }
+
+            addDetailButtons();
+            new MutationObserver(addDetailButtons).observe(courses, { childList: true });
+
+            courses.addEventListener('click', event => {
+                if (!event.target.closest('.course-detail-link')) return;
+                const card = event.target.closest('.course');
+                if (card) showDetail(card, event.target.closest('.course-detail-link'));
+            });
+
+            detail.addEventListener('click', event => {
+                if (event.target === detail || event.target.closest('.course-detail-close')) {
+                    detail.close();
+                }
+            });
+            detail.addEventListener('close', () => {
+                if (lastTrigger) lastTrigger.focus({ preventScroll: true });
+            });
+        })();
+    </script>
     <script>
         document.querySelector('.email-contact').addEventListener('click', event => {
             const form = document.getElementById('leadForm');
